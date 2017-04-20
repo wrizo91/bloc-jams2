@@ -11,7 +11,7 @@
 
          }
      
-     for(var i=0; i < point.length; i++) {
+     for(var i=0; i < points.length; i++) {
          
          revealPoint(i);
         }
