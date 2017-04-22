@@ -28,6 +28,21 @@ var albumPicasso = {
          { title: 'Wrong phone number', duration: '2:15'}
      ]
  };
+
+ var albumPinkFloyd = {
+     title: 'Dark Side of Moon',
+     artist: 'Pink Floyd',
+     label: 'Abbey Road Studios',
+     year: '1973',
+     albumArtUrl: 'assets/images/album_covers/13.png',
+     songs: [
+         { title: 'Speak to me', duration: '1:30' },
+         { title: 'Breathe', duration: '2:43' },
+         { title: 'On the run', duration: '3:30'},
+         { title: 'Time', duration: '6:53' },
+         { title: 'The Great Gig in the sky', duration: '4:15'}
+     ]
+ };
  var createSongRow = function(songNumber, songName, songLength) {
      var template =
         '<tr class="album-view-song-item">'
@@ -39,13 +54,16 @@ var albumPicasso = {
  
      return template;
  };
-var setCurrentAlbum = function(album) {
+
      // #1
      var albumTitle = document.getElementsByClassName('album-view-title')[0];
      var albumArtist = document.getElementsByClassName('album-view-artist')[0];
      var albumReleaseInfo = document.getElementsByClassName('album-view-release-info')[0];
      var albumImage = document.getElementsByClassName('album-cover-art')[0];
      var albumSongList = document.getElementsByClassName('album-view-song-list')[0];
+
+var setCurrentAlbum = function(album) {
+
  
      // #2
      albumTitle.firstChild.nodeValue = album.title;
@@ -64,4 +82,15 @@ var setCurrentAlbum = function(album) {
  
  window.onload = function() {
      setCurrentAlbum(albumPicasso);
- };
+     var index = 1
+     var albums = [albumPicasso, albumMarconi, albumPinkFloyd];
+ 
+
+    albumImage.addEventListener("click", function(event) {
+        setCurrentAlbum(albums[index]);
+        index++;
+        if (index == albums.length) {
+            index = 0;
+        }                        
+                                });
+};
